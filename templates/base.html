@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
     <script>
         tailwind.config = {
+            darkMode: 'class',
             theme: {
                 extend: {
                     colors: {
@@ -19,15 +20,15 @@
         }
     </script>
 </head>
-<body class="bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50 min-h-screen">
+<body class="bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50 min-h-screen dark:bg-gradient-to-br dark:from-gray-950 dark:via-black dark:to-gray-950 dark:text-gray-100">
     <!-- Animated background blobs -->
-    <div class="fixed inset-0 overflow-hidden pointer-events-none z-0">
+    <div class="fixed inset-0 overflow-hidden pointer-events-none z-0 dark:opacity-20">
         <div class="blob blob-1"></div>
         <div class="blob blob-2"></div>
         <div class="blob blob-3"></div>
     </div>
 
-    <nav class="relative z-10 backdrop-blur-md bg-white/80 shadow-lg border-b border-white/20">
+    <nav class="relative z-10 backdrop-blur-md bg-white/80 shadow-lg border-b border-white/20 dark:bg-gray-950/80 dark:border-gray-900">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between h-20 items-center">
                 <div class="flex items-center space-x-3">
@@ -42,10 +43,16 @@
                     </div>
                 </div>
                 <div class="flex items-center space-x-2">
-                    <span class="px-3 py-1 bg-green-100 text-green-700 rounded-full text-xs font-semibold flex items-center">
-                        <span class="w-2 h-2 bg-green-500 rounded-full mr-2 animate-pulse"></span>
-                        Active
-                    </span>
+                    <!-- Dark/Light mode toggle button -->
+                    <button id="theme-toggle" type="button" aria-label="Toggle dark mode"
+                        class="p-2 rounded-full bg-gray-200 dark:bg-gray-800 hover:bg-gray-300 dark:hover:bg-gray-700 transition-colors duration-200 shadow flex items-center justify-center">
+                        <svg id="theme-toggle-light-icon" class="w-6 h-6 hidden text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M10 3.25a.75.75 0 01.75.75v1a.75.75 0 01-1.5 0v-1A.75.75 0 0110 3.25zm0 10a2.75 2.75 0 100-5.5 2.75 2.75 0 000 5.5zm6.75-2.75a.75.75 0 01.75.75v.5a.75.75 0 01-1.5 0v-.5a.75.75 0 01.75-.75zm-13.5 0a.75.75 0 01.75.75v.5a.75.75 0 01-1.5 0v-.5a.75.75 0 01.75-.75zm10.61-5.36a.75.75 0 011.06 1.06l-.71.71a.75.75 0 11-1.06-1.06l.71-.71zm-8.48 8.48a.75.75 0 011.06 0l.71.71a.75.75 0 11-1.06 1.06l-.71-.71a.75.75 0 010-1.06zm8.48 8.48a.75.75 0 010-1.06l.71-.71a.75.75 0 111.06 1.06l-.71.71a.75.75 0 01-1.06 0zm-8.48-8.48a.75.75 0 010-1.06l.71-.71a.75.75 0 111.06 1.06l-.71.71a.75.75 0 01-1.06 0z"/>
+                        </svg>
+                        <svg id="theme-toggle-dark-icon" class="w-6 h-6 hidden text-gray-200" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"/>
+                        </svg>
+                    </button>
                 </div>
             </div>
         </div>
@@ -55,7 +62,39 @@
         {% block content %}{% endblock %}
     </main>
     
-    <footer class="relative z-10 mt-20 backdrop-blur-md bg-white/60 border-t border-white/20">
+    <footer class="relative z-10 mt-20 backdrop-blur-md bg-white/60 border-t border-white/20 dark:bg-gray-950 dark:border-gray-900">
+</script>
+<script>
+// Dark/Light mode toggle logic
+const themeToggleBtn = document.getElementById('theme-toggle');
+const lightIcon = document.getElementById('theme-toggle-light-icon');
+const darkIcon = document.getElementById('theme-toggle-dark-icon');
+
+// On page load, set icon and theme
+if (localStorage.getItem('theme') === 'dark' ||
+    (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+    document.documentElement.classList.add('dark');
+    darkIcon.classList.remove('hidden');
+    lightIcon.classList.add('hidden');
+} else {
+    document.documentElement.classList.remove('dark');
+    lightIcon.classList.remove('hidden');
+    darkIcon.classList.add('hidden');
+}
+
+themeToggleBtn.addEventListener('click', function() {
+    document.documentElement.classList.toggle('dark');
+    if (document.documentElement.classList.contains('dark')) {
+        darkIcon.classList.remove('hidden');
+        lightIcon.classList.add('hidden');
+        localStorage.setItem('theme', 'dark');
+    } else {
+        lightIcon.classList.remove('hidden');
+        darkIcon.classList.add('hidden');
+        localStorage.setItem('theme', 'light');
+    }
+});
+</script>
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
             <div class="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
                 <p class="text-gray-600 text-sm">© 2025 AutoCV. Built with Flask + AI for student career success</p>
