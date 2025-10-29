@@ -1,0 +1,9 @@
+{
+  "languages": ["Python", "Java", "JavaScript", "C++", "C", "Go", "Rust", "TypeScript", "PHP", "Ruby", "Swift", "Kotlin"],
+  "frameworks": ["Flask", "Django", "React", "Node.js", "Express", "Spring Boot", "FastAPI", "Angular", "Vue.js", "Next.js"],
+  "ml_ai": ["PyTorch", "TensorFlow", "scikit-learn", "OpenCV", "Keras", "Hugging Face", "YOLO", "CNN", "RNN", "NLP"],
+  "databases": ["MySQL", "PostgreSQL", "MongoDB", "Redis", "SQLite", "Firebase", "Oracle", "Cassandra"],
+  "cloud": ["AWS", "Azure", "GCP", "Docker", "Kubernetes", "Heroku", "Vercel", "Netlify", "Jenkins", "CI/CD"],
+  "tools": ["Git", "GitHub", "GitLab", "Linux", "VS Code", "Jupyter", "Postman", "Jira"],
+  "security": ["Kali Linux", "penetration testing", "OWASP", "cybersecurity", "encryption", "firewall"]
+}
