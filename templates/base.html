@@ -46,9 +46,7 @@
                     <!-- Dark/Light mode toggle button -->
                     <button id="theme-toggle" type="button" aria-label="Toggle dark mode"
                         class="p-2 rounded-full bg-gray-200 dark:bg-gray-800 hover:bg-gray-300 dark:hover:bg-gray-700 transition-colors duration-200 shadow flex items-center justify-center">
-                        <svg id="theme-toggle-light-icon" class="w-6 h-6 hidden text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
-                            <path d="M10 3.25a.75.75 0 01.75.75v1a.75.75 0 01-1.5 0v-1A.75.75 0 0110 3.25zm0 10a2.75 2.75 0 100-5.5 2.75 2.75 0 000 5.5zm6.75-2.75a.75.75 0 01.75.75v.5a.75.75 0 01-1.5 0v-.5a.75.75 0 01.75-.75zm-13.5 0a.75.75 0 01.75.75v.5a.75.75 0 01-1.5 0v-.5a.75.75 0 01.75-.75zm10.61-5.36a.75.75 0 011.06 1.06l-.71.71a.75.75 0 11-1.06-1.06l.71-.71zm-8.48 8.48a.75.75 0 011.06 0l.71.71a.75.75 0 11-1.06 1.06l-.71-.71a.75.75 0 010-1.06zm8.48 8.48a.75.75 0 010-1.06l.71-.71a.75.75 0 111.06 1.06l-.71.71a.75.75 0 01-1.06 0zm-8.48-8.48a.75.75 0 010-1.06l.71-.71a.75.75 0 111.06 1.06l-.71.71a.75.75 0 01-1.06 0z"/>
-                        </svg>
+                        <img id="theme-toggle-light-icon" class="w-6 h-6 hidden object-contain" src="{{ url_for('static', filename='icons/sun.png') }}" alt="Light mode" />
                         <svg id="theme-toggle-dark-icon" class="w-6 h-6 hidden text-gray-200" fill="currentColor" viewBox="0 0 20 20">
                             <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"/>
                         </svg>
