@@ -33,7 +33,7 @@ AutoCV is a Flask-based web application that analyzes student resumes using NLP 
 
 2. **Create virtual environment**
 ```bash
-python3.11 -m venv venv
+python3.11 -m venv venv   # On Windows: python -m venv venvwin
 source venv/bin/activate  # On Windows: venv\Scripts\activate
 ```
 
