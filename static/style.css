@@ -258,6 +258,80 @@ html.dark ::-webkit-scrollbar-track {
     background: #0f0f14;
 }
 
+/* ------------------------------ */
+/* Dark mode typography overrides */
+/* Make all copy white or near-white in dark mode, while preserving accents */
+html.dark body {
+    color: #f9fafb; /* tailwind gray-50/100 */
+}
+
+/* Map common gray text utilities to light shades in dark mode */
+html.dark .text-gray-900,
+html.dark .text-gray-800,
+html.dark .text-gray-700 {
+    color: #f9fafb !important; /* brightest text */
+}
+
+html.dark .text-gray-600,
+html.dark .text-gray-500 {
+    color: #e5e7eb !important; /* light gray */
+}
+
+html.dark .text-gray-400,
+html.dark .text-gray-300 {
+    color: #d1d5db !important; /* subtle light */
+}
+
+/* Links in dark mode: light by default, subtle indigo on hover */
+html.dark a {
+    color: #f3f4f6; /* very light */
+}
+html.dark a:hover {
+    color: #c7d2fe; /* indigo-200 */
+}
+
+/* Form controls in dark mode: readable text and placeholders */
+html.dark input,
+html.dark textarea,
+html.dark select {
+    color: #f9fafb !important; /* white */
+    caret-color: #f9fafb;
+}
+
+html.dark input::placeholder,
+html.dark textarea::placeholder {
+    color: #e5e7eb; /* gray-200 */
+}
+
+/* Optional: slightly darker control background and softer borders if not already themed via classes */
+html.dark input,
+html.dark textarea,
+html.dark select {
+    background-color: rgba(17, 24, 39, 0.85); /* gray-900 */
+    border-color: #374151; /* gray-700 */
+}
+
+html.dark input:focus,
+html.dark textarea:focus,
+html.dark select:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.35); /* indigo-500 focus ring */
+}
+
+/* Exceptions: keep card content text BLACK on light pastel cards even in dark mode */
+html.dark li.bg-red-50 .text-gray-800,
+html.dark li.bg-yellow-50 .text-gray-800,
+html.dark li.bg-blue-50 .text-gray-800 {
+    color: #111827 !important; /* gray-900 (near-black) */
+}
+
+/* Bullet rewrite cards: keep text dark for readability on light backgrounds */
+html.dark .stagger-item.bg-gradient-to-r.from-gray-50.to-blue-50 p,
+html.dark .stagger-item.bg-gradient-to-r.from-gray-50.to-blue-50 .text-gray-700,
+html.dark .stagger-item.bg-gradient-to-r.from-gray-50.to-blue-50 .text-gray-900 {
+    color: #111827 !important;
+}
+
 ::-webkit-scrollbar-thumb {
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     border-radius: 5px;
