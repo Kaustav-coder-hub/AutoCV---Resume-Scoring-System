@@ -10,8 +10,6 @@ services:
       python -m pip install --upgrade pip setuptools wheel
       # Install project dependencies
       pip install -r requirements.txt
-      # Fetch spaCy model
-      python -m spacy download en_core_web_sm
     startCommand: gunicorn app:app --workers 2 --bind 0.0.0.0:$PORT
     envVars:
       - key: SECRET_KEY

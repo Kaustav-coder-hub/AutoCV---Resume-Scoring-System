@@ -1,4 +1,4 @@
-import fitz  # PyMuPDF
+from PyPDF2 import PdfReader
 from docx import Document
 import re
 
@@ -8,17 +8,22 @@ def parse_pdf(file_path):
     Returns dict with sections, contact info, and links
     """
     try:
-        doc = fitz.open(file_path)
         full_text = ""
-        
-        # Extract text from all pages
-        for page in doc:
-            full_text += page.get_text()
-        
-        # Get page count BEFORE closing
-        page_count = len(doc)
-        
-        doc.close()
+        # Open and read PDF using PyPDF2
+        with open(file_path, 'rb') as f:
+            reader = PdfReader(f)
+            # Handle simple encrypted PDFs (no password) gracefully
+            if getattr(reader, 'is_encrypted', False):
+                try:
+                    reader.decrypt("")
+                except Exception:
+                    raise Exception("Encrypted PDF not supported")
+
+            page_count = len(reader.pages)
+            for page in reader.pages:
+                # extract_text() may return None; guard it
+                text = page.extract_text() or ""
+                full_text += text + "\n"
         
         # Extract contact information
         contact = extract_contact_info(full_text)

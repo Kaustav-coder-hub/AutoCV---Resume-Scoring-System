@@ -12,6 +12,7 @@ build/
 
 # Virtual Environment
 venv/
+venv2/
 venvwin/
 env/
 ENV/
