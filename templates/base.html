@@ -94,11 +94,12 @@ themeToggleBtn.addEventListener('click', function() {
 </script>
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
             <div class="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
-                <p class="text-gray-600 text-sm">© 2025 AutoCV. Built with Flask + AI for student career success</p>
+                <p class="text-gray-600 text-sm">© 2025 AutoCV. Built with Flask + AI by Kaustav Chakraborty</p>
                 <div class="flex space-x-6 text-sm text-gray-500">
-                    <a href="#" class="hover:text-indigo-600 transition-colors">Privacy</a>
-                    <a href="#" class="hover:text-indigo-600 transition-colors">Terms</a>
-                    <a href="#" class="hover:text-indigo-600 transition-colors">Contact</a>
+                    <a href="https://kaustavworks.netlify.app/" class="hover:text-indigo-600 transition-colors">My Website</a>
+                    <a href="{{ url_for('privacy') }}" class="hover:text-indigo-600 transition-colors">Privacy</a>
+                    <a href="{{ url_for('terms') }}" class="hover:text-indigo-600 transition-colors">Terms</a>
+                    <a href="{{ url_for('contact') }}" class="hover:text-indigo-600 transition-colors">Contact</a>
                 </div>
             </div>
         </div>

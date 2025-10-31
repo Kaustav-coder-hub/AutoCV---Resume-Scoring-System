@@ -33,6 +33,28 @@ def index():
     """Home page with upload form"""
     return render_template('upload.html')
 
+
+@app.route('/privacy')
+def privacy():
+    """Privacy Policy page"""
+    return render_template('privacy.html')
+
+
+@app.route('/terms')
+def terms():
+    """Terms of Service page"""
+    return render_template('terms.html')
+
+
+@app.route('/contact', methods=['GET', 'POST'])
+def contact():
+    """Contact page with simple submit feedback (no email backend)"""
+    submitted = False
+    if request.method == 'POST':
+        # In a real app, you'd send email or store the message
+        submitted = True
+    return render_template('contact.html', submitted=submitted)
+
 @app.route('/api/score-resume', methods=['POST'])
 def score_resume_api():
     """
