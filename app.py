@@ -3,6 +3,7 @@ from werkzeug.utils import secure_filename
 import os
 import uuid
 from datetime import datetime
+from dotenv import load_dotenv
 
 import config
 from database.db import db, init_db
@@ -12,6 +13,8 @@ from core.scorer import score_resume
 from core.feedback import compile_full_feedback
 
 app = Flask(__name__)
+# Load variables from a local .env file if present (no-op in production)
+load_dotenv()
 # Read secret from environment in production; fallback for local dev
 app.secret_key = os.environ.get('SECRET_KEY', 'dev-secret-key')
 app.config['SQLALCHEMY_DATABASE_URI'] = config.DB_PATH

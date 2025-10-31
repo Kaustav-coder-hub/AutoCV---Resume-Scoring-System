@@ -10,3 +10,4 @@ numpy==1.26.2
 # Ensure a huggingface-hub version that provides `cached_download` for sentence-transformers
 huggingface-hub==0.13.4
 gunicorn
+python-dotenv==1.0.1
