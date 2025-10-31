@@ -1,3 +1,4 @@
+import re
 import config
 
 def normalize_sections(sections):

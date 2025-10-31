@@ -12,7 +12,8 @@ from core.scorer import score_resume
 from core.feedback import compile_full_feedback
 
 app = Flask(__name__)
-app.secret_key = 'your-very-secret-key'  # Use a strong, random value in production!
+# Read secret from environment in production; fallback for local dev
+app.secret_key = os.environ.get('SECRET_KEY', 'dev-secret-key')
 app.config['SQLALCHEMY_DATABASE_URI'] = config.DB_PATH
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['UPLOAD_FOLDER'] = config.UPLOAD_FOLDER
