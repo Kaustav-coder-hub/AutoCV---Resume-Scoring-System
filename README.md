@@ -17,7 +17,7 @@ AutoCV is a Flask-based web application that analyzes student resumes using NLP 
 - **Backend**: Python 3.11, Flask
 - **Database**: SQLite with SQLAlchemy ORM
 - **NLP**: spaCy, sentence-transformers (all-MiniLM-L6-v2)
-- **Parsing**: PyPDF2 (PDF), python-docx (DOCX)
+- **Parsing**: PyMuPDF (PDF), python-docx (DOCX)
 - **Frontend**: Jinja2 templates with Tailwind CSS
 
 ## Installation
