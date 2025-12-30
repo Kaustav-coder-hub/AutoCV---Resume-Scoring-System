@@ -276,6 +276,9 @@ html.dark .text-gray-600,
 html.dark .text-gray-500 {
     color: #e5e7eb !important; /* light gray */
 }
+html.dark .text-black-500 {
+    color: #000000 !important; /* black */
+}
 
 html.dark .text-gray-400,
 html.dark .text-gray-300 {
